@@ -45,6 +45,7 @@ PermitRootLogin no
 sudo systemctl restart sshd
 `````
 > Проверка: `grep -E "^PermitRootLogin" /etc/ssh/sshd_config` → должно вывести `PermitRootLogin no`
+
 **4. Фаервол и статус**
 `````bash
 sudo systemctl status sshd
