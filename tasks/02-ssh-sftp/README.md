@@ -49,7 +49,8 @@ sudo systemctl restart sshd
 **4. Фаервол и статус**
 `````bash
 sudo systemctl status sshd
-sudo ufw allow ssh   # или sudo firewall-cmd --permanent --add-service=ssh && sudo firewall-cmd --reload
+sudo ufw allow ssh   # или
+sudo firewall-cmd --permanent --add-service=ssh && sudo firewall-cmd --reload
 `````
 **Проверка результата (Success Criteria)**
 | Инструмент | Протокол | Действие | Ожидаемый результат | 
