@@ -20,7 +20,7 @@
 - [x] Ключевые команды, конфиги и скриншоты задокументированы
 
 ## Краткая инструкция (Reference)
-> Команды приведены для Debian/Ubuntu и RHEL/CentOS. Адаптируйте под свой дистрибутив.
+> Команды приведены для Debian/Ubuntu.
 
 **1. Создание пользователя**
 `````bash
@@ -35,10 +35,6 @@ sudo usermod -aG wheel intern  # RHEL/CentOS/Fedora
 # Debian/Ubuntu
 sudo apt update && sudo apt install -y openssh-server
 sudo systemctl enable --now ssh
-
-# RHEL/CentOS/Fedora
-sudo dnf install -y openssh-server
-sudo systemctl enable --now sshd
 `````
 **3. Запрет входа root**
 `````bash
