@@ -28,7 +28,6 @@ sudo useradd -m -s /bin/bash intern
 sudo passwd intern
 # (Рекомендуется) Добавить в группу sudo/wheel для последующих задач
 sudo usermod -aG sudo intern   # Debian/Ubuntu
-sudo usermod -aG wheel intern  # RHEL/CentOS/Fedora
 `````
 **2. Установка и запуск SSH**
 `````bash
