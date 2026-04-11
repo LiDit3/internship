@@ -48,8 +48,15 @@ sudo systemctl restart sshd
 
 **4. Фаервол и статус**
 `````bash
+#Проверим статус ssh
 sudo systemctl status sshd
-sudo ufw allow ssh   # или
+
+#Установим пакет firewalld с помощью менеджера пакетов
+sudo apt install firewalld -y
+#Проверим статус службы
+sudo systemctl status firewalld
+
+#Добавим сервис SSH в конфигурацию брандмауэра и перезапустим
 sudo firewall-cmd --permanent --add-service=ssh && sudo firewall-cmd --reload
 `````
 **Проверка результата (Success Criteria)**
