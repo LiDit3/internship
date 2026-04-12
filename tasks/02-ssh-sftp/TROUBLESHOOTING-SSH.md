@@ -73,16 +73,6 @@
 
 ---
 
-## Лог диагностики (заполняется по мере работы)
-
-| # | Дата | Симптом | Выполненные команды | Гипотеза | Решение | Статус |
-|---|------|---------|---------------------|----------|---------|--------|
-| 1 | `YYYY-MM-DD` | `Connection refused` при подключении PuTTY | `systemctl status ssh`, `ss -tlnp` | Сервис не запущен после перезагрузки | `systemctl enable --now ssh` | ✅ Done |
-| 2 | `...` | `Permission denied` для пользователя `intern` | `journalctl -u ssh -f`, `passwd intern` | Пустой хэш пароля | `sudo passwd intern` + повторный вход | ✅ Done |
-| 3 | | | | | | |
-
----
-
 ## Финальная проверка (Success Criteria)
 - [x] `sudo systemctl is-active ssh` → `active`
 - [x] `sudo sshd -T \| grep permitrootlogin` → `permitrootlogin no`
