@@ -42,7 +42,7 @@ sudo mysql_secure_installation
 > Удалите тестовую БД: Yes
 > Перезагрузите привилегии: Yes
 
-**2. Создание пользователя и базы данных**
+### 2. Создание пользователя и базы данных
 ```bash
 # Вход в MySQL под root
 sudo mysql -u root -p
@@ -55,7 +55,7 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 
-**3. Установка веб-сервера и PHP**
+### 3. Установка веб-сервера и PHP
 Вариант A: Apache2 (проще для новичков)
 ```bash
 sudo apt install -y apache2 libapache2-mod-php php-mysql php-mbstring php-zip php-gd php-json php-curl
@@ -67,7 +67,7 @@ sudo apt install -y nginx php-fpm php-mysql php-mbstring php-zip php-gd php-json
 sudo systemctl enable --now nginx php8.2-fpm  # версия php может отличаться
 ```
 
-**4. Установка phpMyAdmin**
+### 4. Установка phpMyAdmin
 ```bash
 sudo apt install -y phpmyadmin
 ```
@@ -113,7 +113,7 @@ sudo ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-**5. Проброс портов в VirtualBox (если NAT)**
+### 5. Проброс портов в VirtualBox (если NAT)**
 ```
 VirtualBox Manager → ВМ → Настройки → Сеть → Адаптер 1 → Проброс портов:
 | Имя      | Протокол | Адрес хоста | Порт хоста | Адрес гостя | Порт гостя |
@@ -122,7 +122,7 @@ VirtualBox Manager → ВМ → Настройки → Сеть → Адапте
 ```
 > Доступ с хоста: http://127.0.0.1:8080/phpmyadmin
 
-**6. Проверка и создание таблицы через интерфейс**
+### 6. Проверка и создание таблицы через интерфейс
 1. Откройте в браузере: http://<VM_IP>:8080/phpmyadmin (или http://127.0.0.1:8080/phpmyadmin)
 2. Войдите под пользователем intern / StrongP@ssw0rd!
 3. Выберите базу intern_db
@@ -145,7 +145,7 @@ VirtualBox Manager → ВМ → Настройки → Сеть → Адапте
 | Вход в phpMyAdmin | Логин: `intern`, пароль: `***` | Успешная авторизация, видна БД `intern_db` | 
 | Таблица `test` | Интерфейс → вкладка «Структура» | Отображаются поля: `id`, `field1`, `field2` с корректными типами | 
 
-**Рекомендации**
+### Рекомендации
 * Безопасность phpMyAdmin:
 ```apache
 # Apache: /etc/apache2/conf-available/phpmyadmin.conf
