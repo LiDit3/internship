@@ -43,6 +43,8 @@ PermitRootLogin no
 # Сохраните и перезапустите сервис
 sudo systemctl restart sshd
 `````
+>[Строка PermitRootLogin в sshd_config](/tasks/02-ssh-sftp/assets/02-sshd-config.png)
+
 > Проверка: `grep -E "^PermitRootLogin" /etc/ssh/sshd_config` → должно вывести `PermitRootLogin no`
 
 **4. Фаервол и статус**
@@ -58,12 +60,14 @@ sudo systemctl status firewalld
 #Добавим сервис SSH в конфигурацию брандмауэра и перезапустим
 sudo firewall-cmd --permanent --add-service=ssh && sudo firewall-cmd --reload
 `````
+> [Вывод status sshd](/tasks/02-ssh-sftp/assets/01-sshd-status.png)
+
 **Проверка результата (Success Criteria)**
 | Инструмент | Протокол | Действие | Ожидаемый результат | 
 |---|------|---------|---------------------|
-| PuTTY | SSH | Ввод IP, порт '`22`, логин `intern` | Консольная сессия, приглашение `intern@vm:~$` |
-| Notepad++ (NppFTP) | SFTP | `Plugins → NppFTP → Show NppFTP Window → Profile Settings → Add New` | Файловая структура `~` видна в панели плагина, файлы открываются/сохраняются |
-| WinSCP | SFTP |`Новый сайт → Протокол: SFTP, IP, порт 22, логин/пароль` | Окно файлового менеджера, drag & drop работает |
+| [PuTTY](/tasks/02-ssh-sftp/assets/03-putty-session.png) | SSH | Ввод IP, порт '`22`, логин `intern` | Консольная сессия, приглашение `intern@vm:~$` |
+| [Notepad++ (NppFTP)](/tasks/02-ssh-sftp/assets/05-nppftp-panel.png) | SFTP | `Plugins → NppFTP → Show NppFTP Window → Profile Settings → Add New` | Файловая структура `~` видна в панели плагина, файлы открываются/сохраняются |
+| [WinSCP] | SFTP |`Новый сайт → Протокол: SFTP, IP, порт 22, логин/пароль` | Окно файлового менеджера, drag & drop работает |
 
 > **NppFTP:** Устанавливается через Plugins → Plugins Admin. При первом подключении появится предупреждение о неизвестном отпечатке хоста (SSH fingerprint) → нажмите `Accept`.
 
