@@ -35,12 +35,12 @@ sudo apt install -y mysql-server
 sudo mysql_secure_installation
 ```
 > При запуске mysql_secure_installation:
-> Установите VALIDATE PASSWORD COMPONENT (опционально, для обучения можно No)
-> Задайте пароль для root
-> Удалите анонимных пользователей: Yes
-> Запретите удалённый вход root: Yes
-> Удалите тестовую БД: Yes
-> Перезагрузите привилегии: Yes
+> * Установите `VALIDATE PASSWORD COMPONENT` (опционально, для обучения можно `No`)
+> * Задайте пароль для `root`
+> * Удалите анонимных пользователей: `Yes`
+> * Запретите удалённый вход root: `Yes`
+> * Удалите тестовую БД: `Yes`
+> * Перезагрузите привилегии: `Yes`
 
 ### 2. Создание пользователя и базы данных
 ```bash
@@ -72,9 +72,9 @@ sudo systemctl enable --now nginx php8.2-fpm  # версия php может от
 sudo apt install -y phpmyadmin
 ```
 > При установке:
-> Web server to reconfigure: выберите apache2 (или none, если используете nginx)
-> Configure database for phpMyAdmin with dbconfig-common? → Yes
-> Задайте пароль для пользователя phpmyadmin в БД
+> * Web server to reconfigure: выберите `apache2` (или `none`, если используете nginx)
+> * Configure database for phpMyAdmin with dbconfig-common? → `Yes`
+> * Задайте пароль для пользователя `phpmyadmin` в БД
 
 Дополнительная настройка для Apache:
 ```bash
