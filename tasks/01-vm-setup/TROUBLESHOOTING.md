@@ -107,15 +107,6 @@ Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 Теперь можно будет устанавливать пакеты из подключённых репозиториев. 
 
 ---
-## Лог диагностики (заполняется по мере работы)
-
-| # | Дата | Симптом | Выполненные команды | Гипотеза | Решение | Статус |
-|---|------|---------|---------------------|----------|---------|--------|
-| 1 | `YYYY-MM-DD` | `ping ya.ru: Name or service not known` | `nslookup ya.ru`, `cat /etc/resolv.conf` | DNS не резолвит | Добавлен `nameserver 8.8.8.8` в `resolv.conf` | ✅ Done |
-| 2 | `...` | `curl: (56) Proxy CONNECT aborted` | `env \| grep -i proxy`, `curl -v` | Прокси требует авторизацию | Экспортированы `HTTP_PROXY/HTTPS_PROXY` | ✅ Done |
-| 3 | | | | | | |
-
----
 
 ## Финальная проверка (Success Criteria)
 - [ ] Windows: браузер открывает `https://ya.ru` без ошибок сертификата/прокси
