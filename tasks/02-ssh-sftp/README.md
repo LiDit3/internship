@@ -67,7 +67,7 @@ sudo firewall-cmd --permanent --add-service=ssh && sudo firewall-cmd --reload
 |---|------|---------|---------------------|
 | [PuTTY](/tasks/02-ssh-sftp/assets/03-putty-session.png) | SSH | Ввод IP, порт '`22`, логин `intern` | Консольная сессия, приглашение `intern@vm:~$` |
 | [Notepad++ (NppFTP)](/tasks/02-ssh-sftp/assets/05-nppftp-panel.png) | SFTP | `Plugins → NppFTP → Show NppFTP Window → Profile Settings → Add New` | Файловая структура `~` видна в панели плагина, файлы открываются/сохраняются |
-| [WinSCP] | SFTP |`Новый сайт → Протокол: SFTP, IP, порт 22, логин/пароль` | Окно файлового менеджера, drag & drop работает |
+| [WinSCP](/tasks/02-ssh-sftp/assets/04-winscp-files.png) | SFTP |`Новый сайт → Протокол: SFTP, IP, порт 22, логин/пароль` | Окно файлового менеджера, drag & drop работает |
 
 > **NppFTP:** Устанавливается через Plugins → Plugins Admin. При первом подключении появится предупреждение о неизвестном отпечатке хоста (SSH fingerprint) → нажмите `Accept`.
 
