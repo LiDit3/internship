@@ -1,6 +1,6 @@
-# 🛠️ TROUBLESHOOTING-SSH: Диагностика и решение проблем подключения
+# TROUBLESHOOTING-SSH: Диагностика и решение проблем подключения
 
-## 🔍 Быстрая диагностика (чек-лист)
+## Быстрая диагностика (чек-лист)
 Выполняйте по порядку. Отмечайте `[x]` при успехе.
 
 - [x] ВМ имеет корректный IP (`ip a` → не `127.0.0.1`, не `169.254.x.x`)
@@ -12,9 +12,9 @@
 
 ---
 
-## 🚨 Типовые ошибки и решения
+## Типовые ошибки и решения
 
-### 1. 🔌 `Connection refused`
+### 1. `Connection refused`
 **Симптом:** Клиент мгновенно возвращает `Connection refused` или `Unable to connect to remote host: Connection refused`
 
 | Сторона | Диагностика | Решение |
@@ -25,7 +25,7 @@
 
 ---
 
-### 2. ⏳ `Connection timed out` / `Network is unreachable`
+### 2. `Connection timed out` / `Network is unreachable`
 **Симптом:** Клиент висит 30-60 сек и завершается с таймаутом
 
 | Причина | Диагностика | Решение |
@@ -36,7 +36,7 @@
 
 ---
 
-### 3. 🔐 `Permission denied (password,publickey)`
+### 3. `Permission denied (password,publickey)`
 **Симптом:** Сервер отклоняет пароль или ключ, несмотря на их корректность
 
 | Причина | Диагностика | Решение |
@@ -46,12 +46,12 @@
 | **Auth методы отключены** | `sudo sshd -T \| grep -E "password\|pubkey"` | В `/etc/ssh/sshd_config`:<br>`PasswordAuthentication yes`<br>`PubkeyAuthentication yes`<br>`sudo systemctl restart ssh` |
 | **SELinux / AppArmor** | `sudo dmesg \| grep -i ssh` или `audit.log` | `sudo setsebool -P sshd_full_access 1` (SELinux)<br>Или временно `setenforce 0` для теста |
 
-> 🔍 **Как смотреть логи в реальном времени:**  
+> **Как смотреть логи в реальном времени:**  
 > `sudo journalctl -u ssh -f` (Debian/Ubuntu)  
 
 ---
 
-### 4. 🔑 `Wrong MAC` / `Algorithm negotiation failed` / `Unable to use key type ssh-rsa`
+### 4. `Wrong MAC` / `Algorithm negotiation failed` / `Unable to use key type ssh-rsa`
 **Симптом:** Современные OpenSSH-серверы отключают устаревшие алгоритмы. Старые клиенты (PuTTY <0.78, WinSCP <5.19) не могут подключиться.
 
 | Сторона | Диагностика | Решение |
@@ -62,7 +62,7 @@
 
 ---
 
-### 5. 🔁 `Too many authentication failures` / `MaxAuthTries reached`
+### 5. `Too many authentication failures` / `MaxAuthTries reached`
 **Симптом:** Клиент отправляет несколько ключей из `ssh-agent`, сервер разрывает соединение до запроса пароля.
 
 | Действие | Команда / Настройка |
@@ -73,7 +73,7 @@
 
 ---
 
-## 📝 Лог диагностики (заполняется по мере работы)
+## Лог диагностики (заполняется по мере работы)
 
 | # | Дата | Симптом | Выполненные команды | Гипотеза | Решение | Статус |
 |---|------|---------|---------------------|----------|---------|--------|
@@ -83,10 +83,10 @@
 
 ---
 
-## ✅ Финальная проверка (Success Criteria)
-- [ ] `sudo systemctl is-active ssh` → `active`
-- [ ] `sudo sshd -T \| grep permitrootlogin` → `permitrootlogin no`
-- [ ] PuTTY: вход под `<user>` успешен, сессия стабильна
-- [ ] WinSCP: протокол `SFTP`, файловая структура доступна, передача файлов работает
-- [ ] Notepad++ + NppFTP: подключение к `sftp://<user>@<ip>:22`, редактирование и сохранение файлов без ошибок
-- [ ] В логах сервера нет `error` или `fatal` за последний час
+## Финальная проверка (Success Criteria)
+- [x] `sudo systemctl is-active ssh` → `active`
+- [x] `sudo sshd -T \| grep permitrootlogin` → `permitrootlogin no`
+- [x] PuTTY: вход под `<user>` успешен, сессия стабильна
+- [x] WinSCP: протокол `SFTP`, файловая структура доступна, передача файлов работает
+- [x] Notepad++ + NppFTP: подключение к `sftp://<user>@<ip>:22`, редактирование и сохранение файлов без ошибок
+- [x] В логах сервера нет `error` или `fatal` за последний час
