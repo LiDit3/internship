@@ -79,6 +79,32 @@
 
 ---
 
+### 4. Минимальная установка Debian / не установлены пакеты  apt 
+**Симптом:** Команда  `curl` не доступна, `apt-get install curl` выдает ошибку `Media changed: please insert the disk labeled 'Debian GNU/Linux 7.4.0 _Wheezy_ - Official amd64 DVD Binary-1 20140208-13:47' in the drive and press Enter`
+
+В подкаталоге настроек менеджера пакетов apt (по умолчанию `/etc/apt/sources.list.d`) создадим файл с расширением `sources`, например, с именем `yandex.sources` и внесём в этот файл записи о зеркале репозиториев Debian Trixie.
+
+`# nano /etc/apt/sources.list.d/yandex.sources`
+
+```debian.sources
+Types: deb
+URIs: https://mirror.yandex.ru/debian/
+Suites: trixie trixie-updates
+Components: main non-free-firmware contrib non-free
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: https://mirror.yandex.ru/debian-security
+Suites: trixie-security
+Components: main non-free-firmware contrib non-free
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+```
+Обратите внимание на то, что записи о репозиториях, указанные в созданном нами файле, не должны конфликтовать с записями в других файлах `*.sources` или `*.list` (например в стандартном файле `/etc/apt/sources.list`)
+`# apt update`
+Теперь можно будет устанавливать пакеты из подключённых репозиториев. 
+
+
+---
 ## Лог диагностики (заполняется по мере работы)
 
 | # | Дата | Симптом | Выполненные команды | Гипотеза | Решение | Статус |
