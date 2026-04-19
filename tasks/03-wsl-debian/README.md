@@ -13,12 +13,12 @@
 ## Чек-лист выполнения
 - [x] Включены компоненты Windows: `WSL` и `Virtual Machine Platform`
 - [x] Установлен и запущен WSL2 (по умолчанию версия 2)
-- [x] Установлен дистрибутив Debian (из Microsoft Store или `wsl --install`)
-- [x] Выполнено обновление пакетов: `apt update && apt upgrade -y`
+- [x] Установлен дистрибутив Debian (`wsl --install`) [Вывод wsl -l -v в PowerShell](/tasks/03-wsl-debian/assets/01-wsl-version.png)
+- [x] Выполнено обновление пакетов: `apt update && apt upgrade -y` [(успешное завершение)](/tasks/03-wsl-debian/assets/02-apt-install.png)
 - [x] Установлены: `gcc`, `make`, `python3`, `python3-pip`, `mc`
 - [x] Запущен `mc`, проверена навигация и выход (`F10`)
-- [x] Изучена структура `/mnt/` (смонтированные диски Windows)
-- [x] Проверена совместимость и версии установленного ПО
+- [x] Изучена структура `/mnt/` (смонтированные диски Windows) [mc с открытой директорией /mnt/c/Windows/System32/](/tasks/03-wsl-debian/assets/03-mc-mnt-c.png)
+- [x] Проверена совместимость и версии установленного ПО [Вывод python3 -V, gcc -v, pip3 -V](/tasks/03-wsl-debian/assets/04-versions-output.png)
 
 ## Краткая инструкция (Reference)
 > Все команды выполняются внутри терминала WSL (Debian). При запросе `sudo` введите пароль, заданный при первом запуске дистрибутива.
