@@ -123,9 +123,4 @@ VirtualBox Manager → Ваша ВМ → Настройки → Сеть → А�
 
 **Рекомендации** 
 - **Права доступа:** Убедитесь, что пользователь `www-data` имеет права на чтение файлов в `/var/www/my-site-8090/`: `sudo chown -R www-data:www-data /var/www/my-site-8090 && sudo chmod -R 755 /var/www/my-site-8090`
-- **Отладка:** При ошибках 403/404 смотрите логи:
-  ```bash
-  sudo tail -f /var/log/nginx/error.log
-  sudo tail -f /var/log/nginx/access.log
-  ```
 - **Доступ с хоста:** Если используете `Bridged Adapter`, узнайте IP ВМ через `ip a` и обращайтесь по `http://<VM_IP>:8090`. При NAT — только через проброс портов на `127.0.0.1`.
