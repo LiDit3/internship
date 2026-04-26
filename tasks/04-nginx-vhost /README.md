@@ -17,9 +17,8 @@
 - [x] Проверен дефолтный сайт: `http://127.0.0.1` → nginx welcome page
 - [x] Создан конфиг виртуального хоста на порту `8090`
 - [x] Создана кастомная `index.html` с изображением [Ход решения и отладка](TROUBLESHOOTING.md)
-- [x] Проверен доступ: `http://127.0.0.1:8090` → отображается ваша страница
+- [x] Проверен доступ: `http://127.0.0.1:8090` → отображается наша страница [Браузер с открытой http://127.0.0.1:8090](/tasks/04-nginx-vhost/assets/03-browser-8090.png)
 - [x] Настроены права доступа к файлам (если требуется)
-- [x] Ключевые шаги, конфиги и скриншоты задокументированы
 
 ## Краткая инструкция (Reference)
 > Все команды выполняются внутри ВМ с Debian. При использовании NAT в VirtualBox настройте проброс портов: `Host: 8090 → Guest: 8090`.
@@ -30,6 +29,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y nginx
 sudo systemctl enable --now nginx
 ```
+ [Вывод sudo systemctl status nginx](/tasks/04-nginx-vhost/assets/01-nginx-status.png)
+ 
 **2. Проверка дефолтного сайта**
 ```bash
 # Внутри ВМ
@@ -103,6 +104,8 @@ sudo ln -s /etc/nginx/sites-available/my-site-8090 /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
+[Вывод sudo nginx -t](/tasks/04-nginx-vhost/assets/02-nginx-test.png)
+
 **5. Настройка проброса портов в VirtualBox (если используется NAT)**
 ```
 VirtualBox Manager → Ваша ВМ → Настройки → Сеть → Адаптер 1 → Дополнительно → Проброс портов:
@@ -123,4 +126,4 @@ VirtualBox Manager → Ваша ВМ → Настройки → Сеть → А�
 
 **Рекомендации** 
 - **Права доступа:** Убедитесь, что пользователь `www-data` имеет права на чтение файлов в `/var/www/my-site-8090/`: `sudo chown -R www-data:www-data /var/www/my-site-8090 && sudo chmod -R 755 /var/www/my-site-8090`
-- **Доступ с хоста:** Если используете `Bridged Adapter`, узнайте IP ВМ через `ip a` и обращайтесь по `http://<VM_IP>:8090`. При NAT — только через проброс портов на `127.0.0.1`.
+- **Доступ с хоста:** Если используете `Bridged Adapter`, узнайте IP ВМ через `ip a` и обращайтесь по `http://<VM_IP>:8090`. При NAT — только через проброс портов на `127.0.0.1`. [Проброс портов](/tasks/04-nginx-vhost/assets/04-virtualbox-port-forward.png)
