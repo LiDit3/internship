@@ -30,8 +30,8 @@ curl -I http://127.0.0.1:8090 | grep -i content-type
 ```
 **Решение**:
 1. Сохранить файл как UTF-8 без BOM:
-В `nano`: просто сохранить (по умолчанию UTF-8)
-Конвертация: `iconv -f windows-1251 -t utf-8 input.html -o output.html`
+- В `nano`: просто сохранить (по умолчанию UTF-8)
+- Конвертация: `iconv -f windows-1251 -t utf-8 input.html -o output.html`
 2. Добавить в HTML (уже есть в шаблоне):
 ```html
 server {
